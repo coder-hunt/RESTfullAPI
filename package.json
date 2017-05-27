@@ -1,0 +1,31 @@
+{
+  "name": "todolistapi",
+  "version": "1.0.0",
+  "description": "Restful todoListApi",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"echo \\\"Error: no test specified\\\"&& exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/coder-hunt/RESTfullAPI.git"
+  },
+  "keywords": [
+    "\"RESTfull\"",
+    "\"API\"",
+    "\"Tutorial\""
+  ],
+  "author": "Pushpendra Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coder-hunt/RESTfullAPI/issues"
+  },
+  "homepage": "https://github.com/coder-hunt/RESTfullAPI#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.10.2"
+  }
+}
