@@ -55,7 +55,28 @@
        * The role of the user should be admin 
        * This just return { message: 'Customer record successfully deleted' } if user is admin otherwise 
          { message: "Unauthorised access" }
-  
+         
+   * http://localhost:3000/balanced 
+       * Method: POST 
+       * This API is work only when the user is login when the user will call this API
+        with JWT token then he/his performe this action 
+       * As per the data structure of balanced or unbalanced string of parenthesis i used stack 
+         to maintain the stack of the string 
+       * Algorithm: 
+            * Store opening anf closing braces into two separeted array
+            * Read the string from left to right 
+            * Read character from closingBraces array from current character index if exist then 
+            * if stack is empty then return false its means the string is not balanced 
+            * if stack is not empty then pop one element's from stack and check it on openingBraces 
+              array with closingBaces index if the pop-ed character and openingBraces is not same 
+              then return the string is not balanced 
+            * if not character is not exist then push to stack 
+            * continue this process until to reach end of the string    
+           
+            * When string is empty then check if stack is alos empty then return true 
+              else return false 
+            
+        Links: https://drive.google.com/file/d/1zD31rPHAqGhrUMDGCm0CwQCRlC5wxjSl/view?usp=drivesdk
  
  Code Explanation : 
  
