@@ -24,8 +24,6 @@ exports.login = function (req, res) {
     User.findOne({
         email: req.body.email
     }, function (err, user) {
-        // console.log("User details"); 
-        // console.log(user); 
         if (err) throw err;
         if (!user) {
             res.status(401).json({ message: 'User not found.' });
@@ -33,8 +31,6 @@ exports.login = function (req, res) {
             if (!user.comparePassword(req.body.password)) {
                 res.status(401).json({ message: 'Please enter valid password' });
             } else {
-                console.log("Login User details");
-                console.log(user);
                 return res.json({ token: jwt.sign({ _id: user._id, role: user.role, userName: user.userName }, 'schoolcom'), message: "success" });
             }
         }
@@ -50,21 +46,32 @@ exports.loginRequired = function (req, res, next) {
 };
 
 exports.createUser = function (req, res) {
-    var newUser = new User(req.body);
-    newUser.save(function (err, user) {
-        if (err)
-            res.send(err);
-        res.json(user);
-    });
+    console.log(req.user.role);
+    if(req.user.role == 'admin'){
+        var newUser = new User(req.body);
+        newUser.save(function (err, user) {
+            if (err)
+                res.send(err);
+            res.json(user);
+        });
+    }else{
+        res.json({message: "Unauthorised access"});
+    }
+
 };
 
 exports.getUserDetails = function (req, res) {
     console.log(req.query.email);
-    User.findOne({ email: req.query.email }, function (err, user) {
-        if (err)
-            res.send(err);
-        res.json(user);
-    });
+    if(req.user.role == 'admin'){
+        User.findOne({ email: req.query.email }, function (err, user) {
+            if (err)
+                res.send(err);
+            res.json(user);
+        });
+    }else{
+        res.json({message: "Unauthorised access"});
+    }
+
 };
 
 exports.updateUser = function (req, res) {
