@@ -2,7 +2,7 @@
   [nodejs]: https://docs.npmjs.com/getting-started/installing-node
   [mlab]: http://docs.mlab.com/ops/
   
-  {% seo %}
+ # {% seo %}
 
 **Quick start guide list:**
 
